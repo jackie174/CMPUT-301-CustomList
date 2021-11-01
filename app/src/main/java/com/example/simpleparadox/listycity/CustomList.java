@@ -80,8 +80,20 @@ public class CustomList extends ArrayAdapter<City> {
         return 0;
     }
 
-    public void deleteCity(City city){
-        //cities.remove(city);
+    public int deleteCity(City city){
+        cities.remove(city);
+        if (cities.size() > 0) {
+            for (int i = 0; i < cities.size(); i++) {
+                if (cities.get(i).getCityName() == city.getCityName() && cities.get(i).getProvinceName() == city.getProvinceName()) {
+                    return cities.size()-1;
+
+                } else {
+                    return cities.size();
+                }
+            }
+        }
+        return cities.size();
+
     }
 
 
