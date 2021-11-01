@@ -1,11 +1,13 @@
 package com.example.simpleparadox.listycity;
 
 import android.content.Context;
+import android.text.style.IconMarginSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,16 +53,32 @@ public class CustomList extends ArrayAdapter<City> {
     public void addCity(City city){
         cities.add(city);
     }
-    public boolean hasCity(City city) {
-        return false;
-        /*
-        if (cities.contains(city)) {
+    public int hasCity(City city) {
+/*
+        if (city.getCityName()=="Edmonton" && city.getProvinceName()=="Alberta"){
             return true;
+
         }else{
             return false;
+        }*/
+        /*
+        if (cities.contains(city)) {
+            return cities.size();
+        }else{
+            return cities.size();
+        }*/
+        if (cities.size() > 0) {
+            for (int i = 0; i < cities.size(); i++) {
+                if (cities.get(i).getCityName() == city.getCityName() && cities.get(i).getProvinceName() == city.getProvinceName()) {
+                    return 1;
+
+                } else {
+                    return 0;
+                }
+            }
         }
-          */
-        }
+        return 0;
+    }
 
     public void deleteCity(City city){
         //cities.remove(city);
